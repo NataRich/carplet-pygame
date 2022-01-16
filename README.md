@@ -29,14 +29,14 @@ pygame 2.1.2 (SDL 2.0.18, Python 3.8.9)
 Hello from the pygame community...
 ```
 
-### Customization
-#### Where to customize?
+## Customization
+### Where to customize?
 Customization goes in a `json` file under the project directory.
 In our sample, we put it in `plot.json`. You can actually 
 name the file whatever you want, e.g.`this_is_my_plot.json`.
 
-#### How to customize?
-##### A general view
+### How to customize?
+#### A general view
 Customization is parsed in a structured way. At the top level of
 the `json` file, there are 5 keys you need to define, i.e. `name`,
 `creator`, `success`, `indexes`, and `plots`.
@@ -101,8 +101,8 @@ For example,
 }
 ```
 
-##### A detailed view
-###### `Card` in`card.py`
+#### A detailed view
+##### `Card` in`card.py`
 `Card` is the most elementary object that manages a card. It has **4**
 attributes, `title`, `desc`, `effects`, and `cons`. As the attribute
 names suggest, `title` specifies a short name of a card; `desc` is a
@@ -122,7 +122,7 @@ For example,
 }
 ```
 
-###### `Event` in`event.py`
+##### `Event` in`event.py`
 `Event` is the core object that manages plots. It has **3** attributes, 
 `title`, `desc`, and `cards`. Similarly, `title` specifies a short name
 of the event; `desc` is a longer description of the event; `cards` is a
@@ -137,13 +137,13 @@ For example,
 }
 ```
 
-###### Plot
+##### Plot
 Plot is simply a list of events, used to manage different plots.
 
-###### Plots
+##### Plots
 Plots is a list of plot, i.e. a 2D array of `Event` objects.
 
-###### `Index` in `index.py`
+##### `Index` in `index.py`
 `Index` is the object that manages an index. It has **4** attributes, 
 `name`, `start`, `icon`, and `end_str`. `name` specifies a short name
 of the index; `start` sets the initial value and reset value of the index;
@@ -160,7 +160,7 @@ For example,
 }
 ```
 
-###### Indexes
+##### Indexes
 Indexes is simply a list of (**4** of) `index`es.
 
 ## Contributors
