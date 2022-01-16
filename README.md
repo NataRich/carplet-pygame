@@ -34,12 +34,12 @@ Hello from the pygame community...
 ```
 
 ## Customization
-### Where to customize?
+### 1. Where to customize?
 Customization goes in a `json` file under the project directory.
 In our sample, we put it in `plot.json`. You can actually 
 name the file whatever you want, e.g.`this_is_my_plot.json`.
 
-### How to customize?
+### 2. How to customize?
 #### A general view
 Customization is parsed in a structured way. At the top level of
 the `json` file, there are 5 keys you need to define, i.e. `name`,
@@ -167,7 +167,7 @@ For example,
 ##### Indexes
 Indexes is simply a list of (**4** of) `index`es.
 
-### Final step?
+### 3. Final step?
 Having done `json` customization, there is only a few more things
 you need to do before running the program, that is,
 
