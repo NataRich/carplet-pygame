@@ -305,10 +305,9 @@ class Engine:
         float_height = 30
 
         s_ct = cls.c_title_font.render(title, True, hover_color)
-        s_cd = cls.c_desc_font.render(desc, True, hover_color)
         hover_s_ct = cls.c_title_font.render(title, True, default_color)
         hover_s_cd = cls.c_desc_font.render(desc, True, default_color)
-        rect_ct = s_ct.get_rect(midtop=(x + width / 2, y))
+        rect_ct = s_ct.get_rect(midtop=(x + width / 2, y + height / 2 - 50))
         rect_cd = s_ct.get_rect(midtop=(x + width / 2, y + height / 2))
         hover_rect_ct = s_ct.get_rect(midtop=(x + width / 2, y - float_height))
         hover_rect_cd = s_ct.get_rect(midtop=(x + width / 2, y + height / 2 - float_height))
@@ -320,7 +319,6 @@ class Engine:
         else:
             pygame.draw.rect(cls.w, default_color, (x, y, width, height))
             cls.w.blit(s_ct, rect_ct)
-            cls.w.blit(s_cd, rect_cd)
 
     @classmethod
     def __render_center_text(cls, msg, font, color, x, y, allowed_width):
