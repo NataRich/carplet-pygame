@@ -36,9 +36,10 @@ class Engine:
     # misc
     has_clicked = False
     FPS = 15
-    E = 2.5
+    E = 2.25
     counter = 0
     cons = ""
+    ds = []
     popup = False
 
     @classmethod
@@ -131,6 +132,7 @@ class Engine:
                     cls.context.indexes[2].value = l_card.effects[2]
                     cls.context.indexes[3].value = l_card.effects[3]
                     cls.context.next_event()
+                    cls.ds = l_card.effects
                     cls.cons = l_card.cons
                     cls.popup = True
                     continue
@@ -141,6 +143,7 @@ class Engine:
                     cls.context.indexes[2].value = m_card.effects[2]
                     cls.context.indexes[3].value = m_card.effects[3]
                     cls.context.next_event()
+                    cls.ds = m_card.effects
                     cls.cons = m_card.cons
                     cls.popup = True
                     continue
@@ -151,6 +154,7 @@ class Engine:
                     cls.context.indexes[2].value = r_card.effects[2]
                     cls.context.indexes[3].value = r_card.effects[3]
                     cls.context.next_event()
+                    cls.ds = r_card.effects
                     cls.cons = r_card.cons
                     cls.popup = True
                     continue
@@ -171,6 +175,7 @@ class Engine:
             replay_pressed = cls.__press_button(350, 320, 170, 70, cls.start_soundtrack)
             if replay_pressed:
                 cls.popup = False
+                cls.ds = []
                 cls.counter = 0
                 cls.context.reset()
                 cls.__body()
@@ -207,22 +212,31 @@ class Engine:
         # Render first index
         cls.w.blit(cls.I1_IMG, (100, 25))
         cls.w.blit(names[0], (90, 78))
-        cls.w.blit(numbers[0], (170, 30))
 
         # Render second index
         cls.w.blit(cls.I2_IMG, (300, 25))
         cls.w.blit(names[1], (300, 78))
-        cls.w.blit(numbers[1], (370, 30))
 
         # Render third index
         cls.w.blit(cls.I3_IMG, (500, 25))
         cls.w.blit(names[2], (480, 78))
-        cls.w.blit(numbers[2], (570, 30))
 
         # Render fourth index
         cls.w.blit(cls.I4_IMG, (700, 25))
         cls.w.blit(names[3], (690, 78))
-        cls.w.blit(numbers[3], (770, 30))
+
+        # Render increment/decrement numbers or normal numbers
+        if cls.popup:
+            d_nums = [cls.i_number_font.render("+" + str(d) if d >= 0 else str(d), True, "Green" if d >= 0 else "Red") for d in cls.ds]
+            cls.w.blit(d_nums[0], (170, 30))
+            cls.w.blit(d_nums[1], (370, 30))
+            cls.w.blit(d_nums[2], (570, 30))
+            cls.w.blit(d_nums[3], (770, 30))
+        else:
+            cls.w.blit(numbers[0], (170, 30))
+            cls.w.blit(numbers[1], (370, 30))
+            cls.w.blit(numbers[2], (570, 30))
+            cls.w.blit(numbers[3], (770, 30))
 
         # Description Box
         pygame.draw.rect(cls.w, "Black", (120, 125, 710, 260))
