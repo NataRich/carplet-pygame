@@ -47,7 +47,7 @@ the `json` file, there are 5 keys you need to define, i.e. `name`,
 - `name` defines the name of the game
 - `creator` defines the creator(s) of the game
 - `success` defines the string to be printed on the screen if player succeeds
-- `indexes` defines exactly **4** `index`es that are subject to player's decisions
+- `indexes` defines exactly **4** `index`es whose values are subject to player's decisions
   - `index`defines **4** attributes, i.e. `name`, `start`, `icon`, and `end_str`
     - `name` defines the name of the index, e.g. President
     - `start` defines the initial value, e.g. 50
