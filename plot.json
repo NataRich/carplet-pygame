@@ -1,0 +1,205 @@
+{
+  "name": "Carplet",
+  "creator": "JAM",
+  "success": "You well completed your job as a mayor!",
+  "indexes": [
+    {
+      "name": "President",
+      "start": 50,
+      "asset": "Assets/icon/gov.png",
+      "end": "The president FIRED you!"
+    },
+    {
+      "name": "People",
+      "start": 50,
+      "asset": "Assets/icon/ppl.png",
+      "end": "Your people REVOLT against you!"
+    },
+    {
+      "name": "Environment",
+      "start": 50,
+      "asset": "Assets/icon/plant.png",
+      "end": "Mother earth is DYING!!"
+    },
+    {
+      "name": "Treasury",
+      "start": 50,
+      "asset": "Assets/icon/money.png",
+      "end": "Your office runs our of money!"
+    }
+  ],
+  "plots": [
+    [
+      {
+        "title": "Smoke in the Woods",
+        "desc": "Someone reports observing unusual smoke coming out of the woods",
+        "cards": [
+          {
+            "title": "Do Nothing",
+            "desc": "Probobaly kids BBQ",
+            "effects": [0, 0, -20, 0],
+            "cons": "You think it's not a big deal and decide not to worry about it"
+          },
+          {
+            "title": "Ask a Ranger",
+            "desc": "Hey, you know what's going on?",
+            "effects": [0, 10, 0, 0],
+            "cons": "The ranger decide to check it out himself"
+          },
+          {
+            "title": "Let Me See",
+            "desc": "I'll go and have a look",
+            "effects": [0, 0, 0, -10],
+            "cons": "You decide to travel to the woods"
+          }
+        ]
+      },
+      {
+        "title": "FIRE!",
+        "desc": "The smoke in the woods turns out to be a FIRE!",
+        "cards": [
+          {
+            "title": "Do Nothing",
+            "desc": "Let it Burn",
+            "effects": [0, 0, -30, 0],
+            "cons": "What's the big deal?"
+          },
+          {
+            "title": "Tries to Stop the Fire Yourself",
+            "desc": "That is very Brave of Me Indeed",
+            "effects": [10, 10, -10, 0],
+            "cons": "You did your best"
+          },
+          {
+            "title": "Pay the Firefighters",
+            "desc": "For the heros!",
+            "effects": [0, 0, 0, -20],
+            "cons": "You guys made it!"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "title": "Solar power",
+        "desc": "An opportunity arise for you to help people install solar panels",
+        "cards": [
+          {
+            "title": "I doubt if they will like the idea...",
+            "desc": "You think they will be unwilling to pay for installation",
+            "effects": [0, 0, -20, 0],
+            "cons": "You did not help them install solar panels"
+          },
+          {
+            "title": "Sure!",
+            "desc": "You advise your citizen to pay for solar panels",
+            "effects": [0, -10, 10, 0],
+            "cons": "The people are not a fan of paying but fine"
+          },
+          {
+            "title": "I'll pay for them!",
+            "desc": "You pay for all the solar panels",
+            "effects": [0, 10, 10, -20],
+            "cons": "people love them and the earth love them more!"
+          }
+        ]
+      },
+      {
+        "title": "Trade War",
+        "desc": "Your president is indending to enter a trade war with Mexico",
+        "cards": [
+          {
+            "title": "Hell Yeah!",
+            "desc": "Let's do it!",
+            "effects": [20, -10, 0, 0],
+            "cons": "You vote for entering a trade war with Mexico"
+          },
+          {
+            "title": "That's a silly idea",
+            "desc": "I beg to differ",
+            "effects": [-20, 10, 0, 0],
+            "cons": "Your president is not pleased"
+          },
+          {
+            "title": "I really don't care",
+            "desc": "You abstain in voting",
+            "effects": [-10, 5, 0, 0],
+            "cons": "Let them do the show"
+          }
+        ]
+      },
+      {
+        "title": "WARRRRR!",
+        "desc": "The trade war between your country and Mexico has begun",
+        "cards": [
+          {
+            "title": "Impossing tariff",
+            "desc": "You give them 5% tariff",
+            "effects": [10, -20, 0, 20],
+            "cons": "beer become more expensive for the people"
+          },
+          {
+            "title": "I did not start it!",
+            "desc": "You did nothing",
+            "effects": [-20, 0, 0, 0],
+            "cons": "Your president finds out and is unhappy"
+          },
+          {
+            "title": "That's it!",
+            "desc": "You call for a stop",
+            "effects": [-20, 10, 0, 0],
+            "cons": "people can afford beer yet whitehouse does not like it"
+          }
+        ]
+      },
+      {
+        "title": "Smoking free",
+        "desc": "Cigarette is killing people, what are you going to do about it?",
+        "cards": [
+          {
+            "title": "Let's impose taxes",
+            "desc": "You decide to internalize the harm by taxing smokers",
+            "effects": [0, -20, 0, 20],
+            "cons": "The tax return is heavy since Cigarette is a habbitial good"
+          },
+          {
+            "title": "Advertisments always work",
+            "desc": "You publicise the dangers of smoking",
+            "effects": [0, -10, 0, -10],
+            "cons": "That image of lung gives me nightmare!"
+          },
+          {
+            "title": "In fact, let's have some more!",
+            "desc": "You don't think smoking is bad and colaberate with tabaco companies",
+            "effects": [-10, 10, -10, 10],
+            "cons": "There's no scientific evidence showing smoking is bad for you, I think..."
+          }
+        ]
+      },
+      {
+        "title": "FIRE!",
+        "desc": "The smoke in the woods turns out to be a FIRE!",
+        "cards": [
+          {
+            "title": "Do Nothing",
+            "desc": "Let it Burn",
+            "effects": [0, 0, -30, 0],
+            "cons": "What's the big deal?"
+          },
+          {
+            "title": "Tries to Stop the Fire Yourself",
+            "desc": "That is very Brave of Me Indeed",
+            "effects": [10, 10, -10, 0],
+            "cons": "You did your best"
+          },
+          {
+            "title": "Pay the Firefighters",
+            "desc": "For the heros!",
+            "effects": [0, 0, 0, -20],
+            "cons": "You guys made it!"
+          }
+        ]
+      }
+    ]
+  ]
+}
