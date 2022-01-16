@@ -72,6 +72,9 @@ class Engine:
         cls.I2_IMG = pygame.transform.scale(pygame.image.load(cls.context.indexes[1].icon), (48, 48))
         cls.I3_IMG = pygame.transform.scale(pygame.image.load(cls.context.indexes[2].icon), (48, 48))
         cls.I4_IMG = pygame.transform.scale(pygame.image.load(cls.context.indexes[3].icon), (48, 48))
+        # Set Logo
+        cls.logo = pygame.image.load('assets/icon/logo.png')
+        cls.logo = pygame.transform.scale(cls.logo, (150,150))
 
     @classmethod
     def play(cls):
@@ -184,14 +187,15 @@ class Engine:
     def __draw_intro(cls):
         welcome_msg = "Welcome to " + cls.context.name
         creator_msg = "Created by " + cls.context.creator
-
-        # Render texts
-        cls.w.fill((139, 0, 18))
-        cls.__render_center_text(welcome_msg, cls.screen_font, "White", 450, 200, 400)
-        cls.__render_center_text(creator_msg, cls.screen_font, "White", 450, 250, 300)
-
+        cls.w.fill("White")
+        # Render Logo
+        cls.w.blit(cls.logo, (370,50))
+        # Render text
+        cls.__render_center_text(welcome_msg, cls.screen_font, "Black", 450, 200, 400)
+        cls.__render_center_text(creator_msg, cls.screen_font, "Black", 450, 250, 300)
+        cls.__render_center_text("Powered by Carplet", cls.screen_font, "Black", 450, 450, 300)
         # Render button
-        cls.__render_button(400, 320, 125, 70, (139, 0, 18), "White", "Start")
+        cls.__render_button(380, 320, 125, 70, "White", "Black", "Start")
 
         # Update
         cls.__update()
@@ -263,13 +267,14 @@ class Engine:
         i_index = cls.context.cause_index()
         end = cls.context.success if i_index == -1 else cls.context.indexes[i_index].end_str
 
-        cls.w.fill((139, 0, 18))
-
+        cls.w.fill("White")
+        # Render Logo
+        cls.w.blit(cls.logo, (370, 50))
         # Render texts
-        cls.__render_center_text(end, cls.screen_font, "White", 450, 200, 700)
-
+        cls.__render_center_text(end, cls.screen_font, "Black", 450, 200, 700)
+        cls.__render_center_text("Powered by Carplet", cls.screen_font, "Black", 450, 450, 300)
         # Render buttons
-        cls.__render_button(350, 320, 170, 70, (139, 0, 18), "White", "Re-Play")
+        cls.__render_button(370, 330, 170, 70,"White", "Black", "Re-Play")
 
         # Update
         cls.__update()
