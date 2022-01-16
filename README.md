@@ -24,8 +24,7 @@ install the required dependencies
 $ pip install
 ```
 
-Then, running the provided `main.py` in the correct directory
-will suffice.
+Then, run the provided `main.py` in the correct directory
 
 ```shell
 $ python3 main.py
