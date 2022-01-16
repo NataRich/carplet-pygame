@@ -20,6 +20,7 @@ class Engine:
     e_title_font = None
     e_desc_font = None
     c_title_font = None
+    c_title_hover_font = None
     c_desc_font = None
     c_cons_font = None
 
@@ -61,6 +62,7 @@ class Engine:
         cls.i_number_font = pygame.font.Font('assets/font/Abel-Regular.ttf', 40)
         cls.e_title_font = pygame.font.Font('assets/font/Abel-Regular.ttf', 25)
         cls.c_title_font = pygame.font.Font('assets/font/Abel-Regular.ttf', 25)
+        cls.c_title_hover_font = pygame.font.Font('assets/font/Abel-Regular.ttf', 20)
         cls.e_desc_font = pygame.font.Font('assets/font/Abel-Regular.ttf', 20)
         cls.i_name_font = pygame.font.Font('assets/font/Abel-Regular.ttf', 20)
         cls.c_desc_font = pygame.font.Font('assets/font/Abel-Regular.ttf', 16)
@@ -317,21 +319,13 @@ class Engine:
     def __render_card(cls, x, y, width, height, hover_color, default_color, title, desc):
         float_height = 30
 
-        s_ct = cls.c_title_font.render(title, True, hover_color)
-        hover_s_ct = cls.c_title_font.render(title, True, default_color)
-        hover_s_cd = cls.c_desc_font.render(desc, True, default_color)
-        rect_ct = s_ct.get_rect(midtop=(x + width / 2, y + height / 2 - 50))
-        rect_cd = s_ct.get_rect(midtop=(x + width / 2, y + height / 2))
-        hover_rect_ct = s_ct.get_rect(midtop=(x + width / 2, y - float_height))
-        hover_rect_cd = s_ct.get_rect(midtop=(x + width / 2, y + height / 2 - float_height))
-
         if cls.__is_hover(x, y, width, height):
             pygame.draw.rect(cls.w, hover_color, (x, y - float_height, width, height))
-            cls.w.blit(hover_s_ct, hover_rect_ct)
-            cls.w.blit(hover_s_cd, hover_rect_cd)
+            cls.__render_center_text(title, cls.c_title_hover_font, default_color, x + width / 2, y, width - 10)
+            cls.__render_center_text(desc, cls.c_desc_font, default_color, x + width / 2, y + 70, width - 10)
         else:
             pygame.draw.rect(cls.w, default_color, (x, y, width, height))
-            cls.w.blit(s_ct, rect_ct)
+            cls.__render_center_text(title, cls.c_title_font, hover_color, x + width / 2, y + 50, width - 10)
 
     @classmethod
     def __render_center_text(cls, msg, font, color, x, y, allowed_width):
