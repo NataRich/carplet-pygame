@@ -11,6 +11,7 @@ class Engine:
     context = None
     w = None
     clock = None
+    logo = None
 
     # fonts
     screen_font = None
@@ -91,7 +92,7 @@ class Engine:
                 if e.type == pygame.MOUSEBUTTONUP:
                     cls.has_clicked = False
 
-            start_pressed = cls.__press_button(400, 320, 125, 70, cls.start_soundtrack)
+            start_pressed = cls.__press_button(400, 375, 125, 70, cls.start_soundtrack)
             if start_pressed:
                 cls.__body()
 
@@ -175,7 +176,7 @@ class Engine:
                 if e.type == pygame.MOUSEBUTTONUP:
                     cls.has_clicked = False
 
-            replay_pressed = cls.__press_button(350, 320, 170, 70, cls.start_soundtrack)
+            replay_pressed = cls.__press_button(350, 375, 170, 70, cls.start_soundtrack)
             if replay_pressed:
                 cls.popup = False
                 cls.ds = []
@@ -187,15 +188,19 @@ class Engine:
     def __draw_intro(cls):
         welcome_msg = "Welcome to " + cls.context.name
         creator_msg = "Created by " + cls.context.creator
+
         cls.w.fill("White")
+
         # Render Logo
-        cls.w.blit(cls.logo, (370,50))
+        cls.w.blit(cls.logo, (370, 50))
+
         # Render text
-        cls.__render_center_text(welcome_msg, cls.screen_font, "Black", 450, 200, 400)
-        cls.__render_center_text(creator_msg, cls.screen_font, "Black", 450, 250, 300)
-        cls.__render_center_text("Powered by Carplet", cls.screen_font, "Black", 450, 450, 300)
+        cls.__render_center_text(welcome_msg, cls.screen_font, "Black", 450, 225, 500)
+        cls.__render_center_text(creator_msg, cls.i_number_font, "Black", 450, 300, 500)
+        cls.__render_center_text("Powered by Carplet", cls.i_number_font, "Black", 450, 525, 300)
+
         # Render button
-        cls.__render_button(380, 320, 125, 70, "White", "Black", "Start")
+        cls.__render_button(380, 375, 125, 70, "White", "Black", "Start")
 
         # Update
         cls.__update()
@@ -268,13 +273,16 @@ class Engine:
         end = cls.context.success if i_index == -1 else cls.context.indexes[i_index].end_str
 
         cls.w.fill("White")
+
         # Render Logo
         cls.w.blit(cls.logo, (370, 50))
+
         # Render texts
-        cls.__render_center_text(end, cls.screen_font, "Black", 450, 200, 700)
-        cls.__render_center_text("Powered by Carplet", cls.screen_font, "Black", 450, 450, 300)
+        cls.__render_center_text(end, cls.screen_font, "Black", 450, 225, 700)
+        cls.__render_center_text("Powered by Carplet", cls.i_number_font, "Black", 450, 525, 300)
+
         # Render buttons
-        cls.__render_button(370, 330, 170, 70,"White", "Black", "Re-Play")
+        cls.__render_button(370, 375, 170, 70, "White", "Black", "Re-Play")
 
         # Update
         cls.__update()
