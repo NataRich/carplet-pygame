@@ -36,7 +36,7 @@ class Engine:
     # misc
     has_clicked = False
     FPS = 15
-    E = 2
+    E = 2.5
     counter = 0
     cons = ""
     popup = False
@@ -178,16 +178,12 @@ class Engine:
     @classmethod
     def __draw_intro(cls):
         welcome_msg = "Welcome to " + cls.context.name
-        s_wm = cls.screen_font.render(welcome_msg, True, "White")
-        rect_wm = s_wm.get_rect(midtop=(450, 200))
         creator_msg = "Created by " + cls.context.creator
-        s_cm = cls.screen_font.render(creator_msg, True, "White")
-        rect_cm = s_cm.get_rect(midtop=(450, 250))
 
         # Render texts
         cls.w.fill((139, 0, 18))
-        cls.w.blit(s_wm, rect_wm)
-        cls.w.blit(s_cm, rect_cm)
+        cls.__render_center_text(welcome_msg, cls.screen_font, "White", 450, 200, 400)
+        cls.__render_center_text(creator_msg, cls.screen_font, "White", 450, 250, 300)
 
         # Render button
         cls.__render_button(400, 320, 125, 70, (139, 0, 18), "White", "Start")
@@ -202,8 +198,6 @@ class Engine:
         indexes = cls.context.indexes
 
         # Fill messages
-        title = cls.e_title_font.render(e.title, True, "Black")
-        desc = cls.e_desc_font.render(e.desc, True, "Black")
         names = [cls.i_name_font.render(i.name, True, "Black") for i in indexes]
         numbers = [cls.i_number_font.render(str(i.value), True, "Black") for i in indexes]
         cards = e.cards
@@ -233,8 +227,8 @@ class Engine:
         # Description Box
         pygame.draw.rect(cls.w, "Black", (120, 125, 710, 260))
         pygame.draw.rect(cls.w, "White", (125, 130, 700, 250))
-        cls.w.blit(title, (375, 150))
-        cls.w.blit(desc, (225, 250))
+        cls.__render_center_text(e.title, cls.e_title_font, "Black", 475, 140, 350)
+        cls.__render_center_text(e.desc, cls.e_desc_font, "Black", 475, 250, 450)
 
         # Render cards
         cls.__render_card(150, 450, 150, 200, "White", "Black", cards[0].title, cards[0].desc)
@@ -245,8 +239,7 @@ class Engine:
         if cls.popup:
             pygame.draw.rect(cls.w, "Red", (120, 125, 710, 260))
             pygame.draw.rect(cls.w, 'White', (125, 130, 700, 250))
-            s_cons = cls.e_desc_font.render(cls.cons, True, 'Black')
-            cls.w.blit(s_cons, (225, 250))
+            cls.__render_center_text(cls.cons, cls.e_desc_font, "Black", 475, 250, 450)
 
         # Update
         cls.__update()
@@ -254,14 +247,12 @@ class Engine:
     @classmethod
     def __draw_end(cls):
         i_index = cls.context.cause_index()
+        end = cls.context.success if i_index == -1 else cls.context.indexes[i_index].end_str
+
         cls.w.fill((139, 0, 18))
 
-        if i_index == -1:
-            end = cls.screen_font.render(cls.context.success, True, "White")
-            cls.w.blit(end, (90, 200))
-        else:
-            end = cls.screen_font.render(cls.context.indexes[i_index].end_str, True, "White")
-            cls.w.blit(end, (200, 200))
+        # Render texts
+        cls.__render_center_text(end, cls.screen_font, "White", 450, 200, 700)
 
         # Render buttons
         cls.__render_button(350, 320, 170, 70, (139, 0, 18), "White", "Re-Play")
@@ -316,6 +307,31 @@ class Engine:
             pygame.draw.rect(cls.w, default_color, (x, y, width, height))
             cls.w.blit(s_ct, rect_ct)
             cls.w.blit(s_cd, rect_cd)
+
+    @classmethod
+    def __render_center_text(cls, msg, font, color, x, y, allowed_width):
+        words = msg.split()
+        lines = []
+        while len(words) > 0:
+            line_words = []
+            while len(words) > 0:
+                line_words.append(words.pop(0))
+                w, h = font.size(' '.join(line_words + words[:1]))
+                if w > allowed_width:
+                    break
+            line = ' '.join(line_words)
+            lines.append(line)
+
+        y_offset = 0
+        for line in lines:
+            w, h = font.size(line)
+            fx = x - w / 2
+            fy = y + y_offset
+
+            s = font.render(line, True, color)
+            cls.w.blit(s, (fx, fy))
+
+            y_offset += h
 
     @classmethod
     def __press_button(cls, x, y, width, height, sound):
