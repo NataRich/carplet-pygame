@@ -17,13 +17,17 @@ come to an end.
 
 ## Get Started
 ### Sample Game: I'm the Mayor
-To get started with our sample game plots is simple. Running
-the provided `main.py` in the correct directory will suffice.
+To get started with our sample game plots is simple. First,
+install the required dependencies
 
 ```shell
-$ pwd
-/your/path/to/carplet
+$ pip install
+```
 
+Then, running the provided `main.py` in the correct directory
+will suffice.
+
+```shell
 $ python3 main.py
 pygame 2.1.2 (SDL 2.0.18, Python 3.8.9)
 Hello from the pygame community...
@@ -162,6 +166,32 @@ For example,
 
 ##### Indexes
 Indexes is simply a list of (**4** of) `index`es.
+
+### Final step?
+Having done `json` customization, there is only a few more things
+you need to do before running the program, that is,
+
+```python
+# in main.py
+
+if __name__ == "__main__":
+    # file = "plot.json"           # old line
+    file = "this_is_my_plot.json"  # new line
+    Engine.register_context(Context(file))
+    Engine.init()
+    Engine.play()
+```
+
+Then, install the required dependencies before running the program
+
+```shell
+$ pip install
+```
+
+Finally, run the program
+```shell
+$ python3 main.py
+```
 
 ## Contributors
 @Ashley, @Mike, @Jaylan
